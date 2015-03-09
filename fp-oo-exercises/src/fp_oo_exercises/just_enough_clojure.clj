@@ -1,6 +1,6 @@
 (ns fp-oo-exercises.just-enough-clojure)
 
-(def second (fn [list] (nth list 1)))
+(def second2 (fn [list] (nth list 1)))
 (def third (fn [list] (nth list 2)))
 (def third-2 (fn [list] (first (rest (rest list)))))
 
@@ -25,3 +25,16 @@
 (def prefix-of3?
   (fn [candidate seq]
     (= candidate (take (count candidate) seq))))
+
+(def tails
+  (fn [seq]
+    (if (empty? seq)
+      '(())
+      (cons seq (tails (rest seq))))))
+
+(def tails2
+  (fn [seq]
+    (map drop
+         (range (inc (count seq)))
+         (repeat (inc (count seq)) seq))))
+
